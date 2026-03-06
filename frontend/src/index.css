@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --secondary: #a855f7;
+  --accent: #22d3ee;
+  --background: #030712;
+  --surface: #111827;
+  --surface-muted: #1f2937;
+  --text: #f9fafb;
+  --text-muted: #9ca3af;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Base Component Classes */
+@layer components {
+  .glass {
+    @apply bg-opacity-5 backdrop-blur-md border border-white/10;
+    background: var(--glass);
+  }
+
+  .glass-card {
+    @apply bg-opacity-[0.03] backdrop-blur-xl border border-white/10 rounded-lg shadow-glass;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .btn-premium {
+    @apply px-6 py-3 rounded-md font-semibold transition-all duration-300 inline-flex items-center justify-center gap-2 cursor-pointer border-none shadow-md hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary to-secondary text-white shadow-primary-glow hover:shadow-lg hover:shadow-primary/30;
+  }
+
+  .input-premium {
+    @apply bg-surface border border-white/10 text-white px-4 py-3.5 rounded-md w-full transition-all focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .container-premium {
+    @apply max-w-7xl mx-auto px-6 py-12;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-muted);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Overriding any leftover global styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px var(--surface) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
